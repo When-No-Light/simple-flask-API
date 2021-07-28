@@ -5,7 +5,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty
 from kivymd.uix.button import MDFlatButton
 from kivymd.uix.dialog import MDDialog
-
+print('dfsdfs')
 
 class LoginScreen(Screen):
     username = ObjectProperty(None)
