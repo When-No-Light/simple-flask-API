@@ -19,9 +19,6 @@ class RegisterScreen(Screen):
     password_rep = ObjectProperty(None)
     dialog = None
 
-    def print_password(self):
-        print(self.password.text)
-
     def check_password(self):
 
         if self.password.text == self.password_rep.text:
@@ -31,9 +28,8 @@ class RegisterScreen(Screen):
                                    size_hint=(0.5, 1),
                                    buttons=[
                                        MDFlatButton(text='OK', on_release=lambda _: self.dialog.dismiss())
-                                           ])
+                                   ])
             self.dialog.open()
-
 
 
 class WindowManager(ScreenManager):
