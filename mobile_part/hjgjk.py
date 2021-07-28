@@ -1,2 +1,0 @@
-#jkk huj
-print('chlen')
