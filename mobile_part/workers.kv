@@ -1,73 +1,14 @@
-WindowManager:
+#:include kv/registerscreen.kv
+#:include kv/loginscreeen.kv
+ScreenManager:
+    id: screen_manager
     LoginScreen:
+        name: 'logins'
+        id: logins
     RegisterScreen:
+        name: 'registers'
+        id: registers
 
-<LoginScreen>
-    name:'logins'
 
-    username: username
-    password: password
 
-    MDTextField:
-        id:username
-        hint_text: "Enter login"
-        helper_text: "or click on forget username"
-        helper_text_mode: "on_focus"
-        pos_hint: {'center_x':0.5, 'center_y':0.6}
-        size_hint_x:None
-        width:300
-    MDTextField:
-        id:password
-        hint_text: "Enter password"
-        helper_text: "or click on forget password"
-        helper_text_mode: "on_focus"
-        pos_hint: {'center_x':0.5, 'center_y':0.5}
-        size_hint_x:None
-        width:300
-    MDRectangleFlatButton:
-        text: 'Sign in'
-        pos_hint:{'center_x':0.5, 'center_y':0.4}
-        on_release:
 
-    MDRectangleFlatButton:
-        text: 'Or create account'
-        pos_hint:{'center_x':0.5, 'center_y':0.3}
-        on_release:
-            app.root.current = 'registers'
-
-<RegisterScreen>
-    name:'registers'
-
-    email:email
-    username:username
-    password:passw
-    password_rep:password_rep
-    MDTextField:
-        id:email
-        hint_text: "Enter email"
-        pos_hint: {'center_x':0.5, 'center_y':0.7}
-        size_hint_x:None
-        width:300
-    MDTextField:
-        id:username
-        hint_text: "Enter username"
-        pos_hint: {'center_x':0.5, 'center_y':0.6}
-        size_hint_x:None
-        width:300
-    MDTextField:
-        id:passw
-        hint_text: "Enter password"
-        pos_hint: {'center_x':0.5, 'center_y':0.5}
-        size_hint_x:None
-        width:300
-    MDTextField:
-        id:password_rep
-        hint_text: "Repeat password"
-        pos_hint: {'center_x':0.5, 'center_y':0.4}
-        size_hint_x:None
-        width:300
-    MDRectangleFlatButton:
-        text: 'Register'
-        pos_hint:{'center_x':0.5, 'center_y':0.3}
-        on_release:
-            root.check_password()

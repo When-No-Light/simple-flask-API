@@ -1,5 +1,4 @@
 from kivymd.app import MDApp
-from kivy.uix.widget import Widget
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.properties import ObjectProperty
@@ -20,7 +19,6 @@ class RegisterScreen(Screen):
     dialog = None
 
     def check_password(self):
-
         if self.password.text == self.password_rep.text:
             return self.password.text
         else:
@@ -32,17 +30,9 @@ class RegisterScreen(Screen):
             self.dialog.open()
 
 
-class WindowManager(ScreenManager):
-    pass
-
-
-class MyGrid(Widget):
-    pass
-
-
 class WorkersApp(MDApp):
     def build(self):
-        self.kv = Builder.load_file('workers.kv')
+        Builder.load_file('workers.kv')
 
 
 if __name__ == "__main__":
