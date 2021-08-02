@@ -1,0 +1,32 @@
+<LoginScreen>
+    name:'logins'
+
+    username: username
+    password: password
+
+    MDTextField:
+        id:username
+        hint_text: "Enter login"
+        helper_text: "or click on forget username"
+        helper_text_mode: "on_focus"
+        pos_hint: {'center_x':0.5, 'center_y':0.6}
+        size_hint_x:None
+        width:300
+    MDTextField:
+        id:password
+        hint_text: "Enter password"
+        helper_text: "or click on forget password"
+        helper_text_mode: "on_focus"
+        pos_hint: {'center_x':0.5, 'center_y':0.5}
+        size_hint_x:None
+        width:300
+    MDRectangleFlatButton:
+        text: 'Sign in'
+        pos_hint:{'center_x':0.5, 'center_y':0.4}
+        on_release:
+
+    MDRectangleFlatButton:
+        text: 'Or create account'
+        pos_hint:{'center_x':0.5, 'center_y':0.3}
+        on_release:
+            app.root.current = 'registers'
