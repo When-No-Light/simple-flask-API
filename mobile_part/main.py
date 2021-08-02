@@ -5,7 +5,7 @@ from kivy.properties import ObjectProperty
 from kivymd.uix.button import MDFlatButton
 from kivymd.uix.dialog import MDDialog
 
-
+from requests import post
 class LoginScreen(Screen):
     username = ObjectProperty(None)
     password = ObjectProperty(None)
@@ -20,6 +20,8 @@ class RegisterScreen(Screen):
 
     def check_password(self):
         if self.password.text == self.password_rep.text:
+            print(self.email.text)
+            print('d')
             return self.password.text
         else:
             self.dialog = MDDialog(title='Username check', text='Password must be the same',
@@ -29,6 +31,17 @@ class RegisterScreen(Screen):
                                    ])
             self.dialog.open()
 
+    def post_user(self):
+        print("rabotaet")
+        post('http://localhost:5000/post_user', data={'username': f'{self.username.text}', 'email': f'{self.email.text}', 'password': f'{self.password.text}'}) #.json()
+class WindowManager(ScreenManager):
+    pass
+
+
+class MyGrid(Widget):
+    pass
+
+=======
 
 class WorkersApp(MDApp):
     def build(self):
