@@ -1,6 +1,4 @@
-<RegisterScreen>
-    name:'registers'
-
+<RegisterScreen>:
     email:email
     username:username
     password:passw
@@ -33,4 +31,4 @@
         text: 'Register'
         pos_hint:{'center_x':0.5, 'center_y':0.3}
         on_release:
-            root.check_password()
+            root.post_user()
