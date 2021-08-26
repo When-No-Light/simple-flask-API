@@ -100,6 +100,7 @@ def new_user1():
 
 # curl -u Nisagfhtfoxer6:1997d0601Dd -i -X GET http://127.0.0.1:5000/api/resource
 #  requests.post('http://localhost:5000/api/users1', data={'username': 'Nisagfhtfoxer6', 'email': 'nisagh2t1fox1er@ukr.net6', 'password': '1997d0601Dd'}).json()
+#  requests.post('http://localhost:5000/api/users1', data={'username': 'nightfoxer', 'email': 'aragornes228@gmail.com', 'password': '1997d0601Dd'}).json()
 
 
 
