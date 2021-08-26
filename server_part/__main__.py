@@ -13,4 +13,6 @@ if __name__ == '__main__':
 #   db.init_app(app)
    db.create_all()   #   !!!!!!!!!!!!!!! перенести куда то  makefile.py
    app.run()
+   # app.run(ssl_context='adhoc')
+   
    
