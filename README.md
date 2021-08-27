@@ -1,4 +1,59 @@
-# 
+# simple-flask-API
+
+This is a very simple and primitive API designed for a mobile application using PostgreSQL and allowing users to restrict its functionality depending on what access level they have.
+
+## Installing / Getting started
+
+* Clone the project from Github
+
+```shell
+    $ git clone https://github.com/When-No-Light/simple-flask-API.git
+    $ cd simple-flask-API
+```
+
+* Create the .env file:
+
+```shell
+    $ cp .env.example .env
+```
+
+In the .env file, there are config related to the database and mail that must be added.
+
+* Create the virtual environment file:
+
+```shell
+    $ virtualenv venv
+    $ . venv/bin/activate
+    for windows 
+    $ venv/Scripts/activate
+```
+
+* Install dependencies from requirements.txt file
+
+```shell
+    $ pip install -r requirements.txt
+```
+
+
+*   Start the development server
+
+```shell
+    $ python -m server_part
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 `cp .env.example .env`
 to start project press `python -m server_part` to command line
