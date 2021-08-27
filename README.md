@@ -23,6 +23,7 @@ In the .env file, there are config related to the database and mail that must be
 
 ```shell
     $ virtualenv venv
+    for linux
     $ . venv/bin/activate
     for windows 
     $ . venv/Scripts/activate
