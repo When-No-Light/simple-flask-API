@@ -1,10 +1,9 @@
-from os import name
-from flask_security import SQLAlchemyUserDatastore, Security, UserMixin, RoleMixin, login_required
+from flask_security import login_required
 from server_part.app import app
-from server_part.database.tables import Post, Comment, Tag, post_tags, comment_votes, post_votes
-from flask import request, redirect, url_for, render_template
+from server_part.database.tables import Post, Comment, Tag, comment_votes, post_votes
+from flask import request
 from server_part.database import db 
-from flask import abort, jsonify, g
+from flask import jsonify, g
 from server_part.utils.misc import auth
 from datetime import datetime
 

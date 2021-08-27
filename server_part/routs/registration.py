@@ -1,9 +1,9 @@
 import datetime
-from flask_security import SQLAlchemyUserDatastore, Security, UserMixin, RoleMixin, login_required
+from flask_security import login_required
 from routs.mail import send_email
 from utils.token_for_mail import confirm_token, generate_confirmation_token
 from server_part.app import app
-from server_part.database.tables import User, Role, roles_users
+from server_part.database.tables import User, Role
 from flask import request, redirect, url_for, render_template
 from server_part.database import db 
 from flask import abort, jsonify, g
@@ -51,21 +51,21 @@ def verify_password(username_or_token, password):
     
 
 
-@app.route('/post_user', methods=['POST'])
-def post_user():
-    user = User(request.form['username'], request.form['email'])
-    password = request.form['password']
-    db.session.add(user)
-    db.session.commit()
-    token = generate_confirmation_token(user.email)
-    confirm_url = url_for('user.confirm_email', token=token, _external=True)
-    html = render_template('server_part/templates/activate.html', confirm_url=confirm_url)
-    subject = "Please confirm your email"
-    send_email(user.email, subject, html)
+# @app.route('/post_user', methods=['POST'])
+# def post_user():
+#     user = User(request.form['username'], request.form['email'])
+#     password = request.form['password']
+#     db.session.add(user)
+#     db.session.commit()
+#     token = generate_confirmation_token(user.email)
+#     confirm_url = url_for('user.confirm_email', token=token, _external=True)
+#     html = render_template('server_part/templates/activate.html', confirm_url=confirm_url)
+#     subject = "Please confirm your email"
+#     send_email(user.email, subject, html)
 
-    flash('A confirmation email has been sent via email.', 'success')
-    # return redirect(url_for("main.home"))
-    return 'Ok'
+#     flash('A confirmation email has been sent via email.', 'success')
+#     # return redirect(url_for("main.home"))
+#     return 'Ok'
 
 
 
@@ -107,45 +107,6 @@ def new_user1():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route('/api/users', methods = ['POST'])
 def new_user():
     username = request.form['username']
@@ -172,7 +133,7 @@ def new_user():
 #  
 
 @app.route('/confirm/<token>')
-@login_required
+# @login_required            
 def confirm_email(token):
     try:
         email = confirm_token(token)
@@ -187,10 +148,7 @@ def confirm_email(token):
         db.session.add(user)
         db.session.commit()
         flash('You have confirmed your account. Thanks!', 'success')
-    return redirect(url_for('main.home'))
-
-
-
+    return redirect(url_for('index'))
 
 
 

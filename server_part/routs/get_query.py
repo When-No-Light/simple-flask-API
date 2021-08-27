@@ -1,7 +1,6 @@
 from server_part.app import app
-from markupsafe import escape
 from server_part.database.tables import User, Post
-from flask import abort, jsonify, g
+from flask import jsonify
 from server_part.utils.misc import auth
 
 
