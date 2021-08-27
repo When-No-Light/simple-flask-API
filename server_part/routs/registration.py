@@ -1,6 +1,6 @@
 import datetime
 from flask_security import login_required
-from routs.mail import send_email
+from server_part.routs.mail import send_email
 from utils.token_for_mail import confirm_token, generate_confirmation_token
 from server_part.app import app
 from server_part.database.tables import User, Role

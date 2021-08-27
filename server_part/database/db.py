@@ -6,4 +6,4 @@ from server_part.app import app
 
 db = SQLAlchemy(app)
 
-db.create_all()
+#  db.create_all()

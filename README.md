@@ -25,7 +25,7 @@ In the .env file, there are config related to the database and mail that must be
     $ virtualenv venv
     $ . venv/bin/activate
     for windows 
-    $ venv/Scripts/activate
+    $ . venv/Scripts/activate
 ```
 
 * Install dependencies from requirements.txt file
