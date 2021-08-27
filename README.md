@@ -1,4 +1,4 @@
-# try_kivy_app
+# 
 
 `cp .env.example .env`
 to start project press `python -m server_part` to command line
