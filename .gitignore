@@ -9,6 +9,6 @@ nvenv
 env/
 .env
 app_kivi_env/
-.vscode
+
 # PyCharm's .idea directory
 .idea
