@@ -1,7 +1,7 @@
 import datetime
 from flask_security import login_required
-from server_part.routs.mail import send_email
-from utils.token_for_mail import confirm_token, generate_confirmation_token
+from server_part.utils.mail import send_email
+from server_part.utils.token_for_mail import confirm_token, generate_confirmation_token
 from server_part.app import app
 from server_part.database.tables import User, Role
 from flask import request, redirect, url_for, render_template
@@ -69,8 +69,8 @@ def verify_password(username_or_token, password):
 
 
 
-@app.route('/api/users1', methods = ['POST'])
-def new_user1():
+@app.route('/post_user', methods = ['POST'])
+def post_user():
     username = request.form['username']
     email = request.form['email']
     password = request.form['password']
@@ -95,38 +95,40 @@ def new_user1():
 
     flash('A confirmation email has been sent via email.', 'success')
     # return redirect(url_for("main.home"))
-    return 'Ok'
-# requests.get('http://localhost:5000/api/resource', auth=HTTPBasicAuth('Nisagfhtfoxer6', '1997d0601Dd')).json()
+    return jsonify({ 'username': user.username }), 201, {'Location': url_for('get_user', id = user.id, _external = True)}
+    #return 'Ok'
+# requests.get('http://localhost:5000/api/resource', auth=HTTPBasicAuth('123', '123')).json()
 
 # curl -u Nisagfhtfoxer6:1997d0601Dd -i -X GET http://127.0.0.1:5000/api/resource
-#  requests.post('http://localhost:5000/api/users1', data={'username': 'Nisagfhtfoxer6', 'email': 'nisagh2t1fox1er@ukr.net6', 'password': '1997d0601Dd'}).json()
-#  requests.post('http://localhost:5000/api/users1', data={'username': 'nightfoxer', 'email': 'aragornes228@gmail.com', 'password': '1997d0601Dd'}).json()
+#  requests.post('http://localhost:5000/api/users1', data={'username': '123', 'email': 'nisagh2t1fox1er@ukr.net6', 'password': '123'}).json()
+#  requests.post('http://localhost:5000/api/users1', data={'username': '333', 'email': 'aragornes228@gmail.com', 'password': '333'}).json()
 
 
 
 
 
 
-@app.route('/api/users', methods = ['POST'])
-def new_user():
-    username = request.form['username']
-    email = request.form['email']
-    password = request.form['password']
+# @app.route('/api/users', methods = ['POST'])
+# def new_user():
+#     username = request.form['username']
+#     email = request.form['email']
+#     password = request.form['password']
 
 
-    if username is None or password is None or email is None:
-        abort(400) # missing arguments
-    if User.query.filter_by(username = username).first() is not None:
-        # abort(400) # existing user
-        return 'username already taken'
-    if User.query.filter_by(email = email).first() is not None:
-        # abort(400) # existing email in database
-        return 'email already taken'
-    user = User(username=username, email=email)
-    user.hash_password(password)
-    db.session.add(user)
-    db.session.commit()
-    return jsonify({ 'username': user.username }), 201, {'Location': url_for('get_user', id = user.id, _external = True)}
+#     if username is None or password is None or email is None:
+#         abort(400) # missing arguments
+#     if User.query.filter_by(username = username).first() is not None:
+#         # abort(400) # existing user
+#         return 'username already taken'
+#     if User.query.filter_by(email = email).first() is not None:
+#         # abort(400) # existing email in database
+#         return 'email already taken'
+#     user = User(username=username, email=email)
+#     user.hash_password(password)
+#     db.session.add(user)
+#     db.session.commit()
+#     return jsonify({ 'username': user.username }), 201, {'Location': url_for('get_user', id = user.id, _external = True)}
+
 # requests.get('http://localhost:5000/api/resource', auth=HTTPBasicAuth('Nisagfhtfoxer6', '1997d0601Dd')).json()
 
 # curl -u Nisagfhtfoxer6:1997d0601Dd -i -X GET http://127.0.0.1:5000/api/resource
@@ -173,20 +175,17 @@ def get_auth_token():
 
 
 
-# post('http://localhost:5000/add_product', data={'product_name': 'chipsy', 'manufacturer': 'Lays', 'picture_id': 23, 'found': True}).json()
-
-# post('http://localhost:5000/add_product', data={'product_name': 'chipsy', 'found': True, 'manufacturer': 'Lays',   'picture_id': 68969070090}).json()
-
 @app.route('/add_role', methods=['POST'])
 def add_role():
     role = Role(request.form['name'], request.form['description'])
     db.session.add(role)
     db.session.commit()
-    return {'name': 'Nightfoxer6'} # TODO заменить на что то
+    return {'name': 'Nightfoxer6'}
 
 # post('http://localhost:5000/add_role', data={'name': 'admin', 'description': 'Has all possible access rights'}).json()
 
 @app.route('/add_role_for_user', methods=['POST'])
+@auth.login_required(role='admin')
 def add_role_for_user():
     User_and_role_id = [request.form['user_id'], request.form['role_id']]
     user = db.session.query(User).filter_by(id=User_and_role_id[0]).first()
@@ -201,30 +200,8 @@ def add_role_for_user():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @app.route('/admin')
-# @auth.login_required(role='common')
-@auth.login_required(role=['admin', 'common'])
+@auth.login_required(role='admin')
 def admins_only():
     return "Hello {}, you are an admin!".format(auth.current_user())
 
