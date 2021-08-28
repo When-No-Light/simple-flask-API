@@ -101,7 +101,7 @@ def post_user():
 
 # curl -u Nisagfhtfoxer6:1997d0601Dd -i -X GET http://127.0.0.1:5000/api/resource
 #  requests.post('http://localhost:5000/api/users1', data={'username': '123', 'email': 'nisagh2t1fox1er@ukr.net6', 'password': '123'}).json()
-#  requests.post('http://localhost:5000/api/users1', data={'username': '333', 'email': 'aragornes228@gmail.com', 'password': '333'}).json()
+#  requests.post('http://localhost:5000/api/users1', data={'username': '333', 'email': 'aragorgmail.com', 'password': '333'}).json()
 
 
 
@@ -129,7 +129,7 @@ def post_user():
 #     db.session.commit()
 #     return jsonify({ 'username': user.username }), 201, {'Location': url_for('get_user', id = user.id, _external = True)}
 
-# requests.get('http://localhost:5000/api/resource', auth=HTTPBasicAuth('Nisagfhtfoxer6', '1997d0601Dd')).json()
+# requests.get('http://localhost:5000/api/resource', auth=HTTPBasicAuth('username', 'pass')).json()
 
 # curl -u Nisagfhtfoxer6:1997d0601Dd -i -X GET http://127.0.0.1:5000/api/resource
 #  
@@ -180,7 +180,7 @@ def add_role():
     role = Role(request.form['name'], request.form['description'])
     db.session.add(role)
     db.session.commit()
-    return {'name': 'Nightfoxer6'}
+    return {'name': 'Nightfoxer6'} # TODO 
 
 # post('http://localhost:5000/add_role', data={'name': 'admin', 'description': 'Has all possible access rights'}).json()
 
@@ -192,11 +192,11 @@ def add_role_for_user():
     role = db.session.query(Role).filter_by(id=User_and_role_id[1]).first()
     user.roles.append(role)
     db.session.commit()
-    return {'name': 'Nightfoxer6'} # TODO заменить на что то
-    
+    return {'name': 'Nightfoxer6'} # TODO 
+
 # post('http://localhost:5000/add_role_for_user', data={'user_id': 2, 'role_id': 1}).json()
 
-# post('http://localhost:5000/post_user', data={'username': 'Nightfoxer6', 'email': 'nightfoxer@ukr.net6', 'password': '19970601Dd'}).json()
+# post('http://localhost:5000/post_user', data={'username': 'username', 'email': 'nigfoxe@ukr.net6', 'password': 'pass'}).json()
 
 
 

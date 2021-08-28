@@ -17,7 +17,7 @@ def show_user_profile(user_id):
                     'user roles': [role.name for role in user_obj.roles]})
 
 
-# requests.get('http://localhost:5000/user/9', auth=HTTPBasicAuth('Nisagfhtfoxer6', '1997d0601Dd')).json()
+# requests.get('http://localhost:5000/user/9', auth=HTTPBasicAuth('username', 'pass')).json()
 
 
 @app.route('/post/<int:post_id>', methods=['GET'])
@@ -34,4 +34,4 @@ def show_post(post_id):
 
     
 
-# requests.get('http://localhost:5000/post/55', auth=HTTPBasicAuth('Nisagfhtfoxer6', '1997d0601Dd')).json()
+# requests.get('http://localhost:5000/post/55', auth=HTTPBasicAuth('username', 'pass')).json()
